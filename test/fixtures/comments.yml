@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  post_date: 2014-06-26 16:30:02
+  entry_id: 
+
+two:
+  name: MyString
+  post_date: 2014-06-26 16:30:02
+  entry_id: 
