@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+
+  get 'sign_up' => 'users#new', :as => 'sign_up'
+  resources :users
+
+  get "log_out" => "sessions#destroy", :as => "log_out"
+  get "log_in" => "sessions#new", :as => "log_in"
+  resources :sessions, only: [:new, :create, :destroy]
+
+  resources :entries
+
+  resources :comments
+
   get 'home/index'
 
   root 'home#index'
