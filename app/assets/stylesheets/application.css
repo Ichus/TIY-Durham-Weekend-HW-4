@@ -15,3 +15,15 @@
  *= require foundation_and_overrides
 
  */
+
+body {
+    background-image:url('background.jpeg');
+}
+
+.field label{
+    color:white;
+}
+
+.panel label{
+    color:white;
+}

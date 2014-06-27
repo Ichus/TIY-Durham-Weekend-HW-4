@@ -819,7 +819,7 @@
 
 // We use these to control the background and border styles
 // $panel-bg: scale-color(#fff, $lightness: -5%);
-// $panel-border-style: solid;
+ $panel-border-style: none;
 // $panel-border-size: 1px;
 
 // We use this % to control how much we darken things on hover
@@ -831,7 +831,7 @@
 // $panel-padding: rem-calc(20);
 
 // We use these to set default font colors
-// $panel-font-color: #333;
+$panel-font-color: #fff;
 // $panel-font-color-alt: #fff;
 
 // $panel-header-adjust: true;
@@ -1186,11 +1186,11 @@
 // $include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
-// $topbar-bg-color: #333;
+$topbar-bg-color: rgba(85,140,137,0.8);
 // $topbar-bg: $topbar-bg-color;
 
 // Height and margin
-// $topbar-height: 45px;
+$topbar-height: 65px;
 // $topbar-margin-bottom: 0;
 
 // Controlling the styles for the title in the top bar

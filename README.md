@@ -7,3 +7,5 @@ Posts are written in Markdown. They're displayed like on any blog -- reverse seq
 
 
 Posts have a show view where you can just see that post. On the show view, there should be a comment form so you can leave comments. Comments should be shown on the page. Logged in users should be able to delete comments.
+
+Home page background image from https://www.flickr.com/photos/webtreatsetc/4890262262/ under the creative common license http://creativecommons.org/licenses/by/2.0/

@@ -1,5 +1,7 @@
 <%= render "nav" %>
 
+
+<div class="panel small-4 small-centered columns">
 <h1>Sign Up</h1>
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
@@ -13,6 +15,7 @@
       </ul>
     </div>
   <% end %>
+
 
   <div class="field">
     <%= f.label :username %><br>
@@ -30,3 +33,4 @@
     <%= f.submit("Sign up") %>
   </div>
 <% end %>
+</div>
