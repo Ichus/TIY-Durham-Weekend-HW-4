@@ -1,6 +1,5 @@
 class EntriesController < ApplicationController
   before_action :set_entry, only: [:show, :edit, :update, :destroy]
-
   # GET /entries
   # GET /entries.json
   def index
@@ -24,6 +23,7 @@ class EntriesController < ApplicationController
   # POST /entries
   # POST /entries.json
   def create
+    current_user.entries.build(user_id: current_user.id)
     @entry = Entry.new(entry_params)
 
     respond_to do |format|
@@ -69,6 +69,6 @@ class EntriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def entry_params
-      params[:entry]
+      params.require(:entry).permit(:title, :description, :post_date, :user_id)
     end
 end
