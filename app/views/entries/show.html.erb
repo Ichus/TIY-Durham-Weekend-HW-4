@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p><%= @entry.title %></p>
-<p><%= @entry.description %></p>
+<p><%= markdown @entry.description %></p>
 <p><%= @entry.post_date %></p>
 <p>user_id: <%= @entry.user_id %></p>
 
