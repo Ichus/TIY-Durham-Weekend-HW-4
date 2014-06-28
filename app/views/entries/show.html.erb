@@ -5,5 +5,35 @@
 <p><%= @entry.post_date %></p>
 <p>user_id: <%= @entry.user_id %></p>
 
-<%= link_to 'Edit', edit_entry_path(@entry) %> |
-<%= link_to 'Back', entries_path %>
+<div class="panel small-6 small-offset-2 columns">
+<h3>Comment</h3>
+<%= form_for(@comment) do |f| %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+      <% @comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit("New Comment") %>
+  </div>
+<% end %>
+</div>
+
+<!-- <%#= link_to 'Edit', edit_comment_path(@comment) %> |
+<%#= link_to 'Back', entries_path %> -->
