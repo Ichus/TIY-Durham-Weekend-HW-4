@@ -11,7 +11,7 @@ class EntriesController < ApplicationController
   # GET /entries/1.json
   def show
     @comment = Comment.new
-    post_viewed(params[:id])
+    # post_viewed(params[:id])
   end
 
   # GET /entries/new

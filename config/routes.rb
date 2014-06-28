@@ -7,9 +7,17 @@ Rails.application.routes.draw do
   get "log_in" => "sessions#new", :as => "log_in"
   resources :sessions, only: [:new, :create, :destroy]
 
-  resources :entries
+  resources :entries do
+    resources :comments, only: [:index, :new, :create]
+  end
+  resources :comments, only: [:show, :edit, :update, :destroy]
 
-  resources :comments
+  post "/entries/:entry_id/comments(.:format)" => "comments#create", as: "post_comment"
+  # resources :entries do
+  #   resources :comments, shallow: true
+  # end
+
+  #resources :comments
 
   get 'home/index'
 

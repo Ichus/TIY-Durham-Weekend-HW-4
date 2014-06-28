@@ -24,10 +24,11 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    posts = Entry.all
-    @entry = posts.find(last_post_viewed.id)
+    #posts = Entry.all
+    #@entry = posts.find(last_post_viewed.id)
     #@comment.entry = @entry
     #@comment = Comment.new(comment_params)
+    @entry = Entry.find(params[:entry_id])
     @comment = @entry.comments.build(comment_params)
 
     respond_to do |format|
