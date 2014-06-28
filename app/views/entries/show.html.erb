@@ -7,7 +7,7 @@
 
 <div class="panel small-6 small-offset-2 columns">
 <h3>Comment</h3>
-<%= form_for post_comment_path do |f| %>
+<%= form_for [@entry, @comment] do |f| %>
   <% if @comment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
