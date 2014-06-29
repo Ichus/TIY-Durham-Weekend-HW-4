@@ -47,7 +47,7 @@
   <div class='row'>
     <h1>Recent Posts</h1><br><br>
     <% Entry.where(user_id: @user.id).order(post_date: :desc).each do |entry| %>
-      <h3><%= link_to entry.title, entry_path(id: entry.id) %></h3>
+      <h3><%= link_to entry.title, entry_path(id: entry.id), class: "white-text" %></h3>
       <p><%= markdown entry.description %></p>
       <p><%= entry.post_date %></p><br><br>
     <% end %>
