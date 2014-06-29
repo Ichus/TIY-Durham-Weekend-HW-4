@@ -1,49 +1,55 @@
-<nav class="top-bar" data-topbar>
-  <ul class="title-area">
+<% unless current_user == nil %>
+  <nav class="top-bar" data-topbar>
+    <ul class="title-area">
 
-    <li class="name">
-      <h1>
-        <%= link_to "WeBe Bloggin", "/", class: "webe" %>
-      </h1>
-    </li>
-    <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
-    </ul>
-
-    <section class="top-bar-section">
-
-      <ul class="right">
-        <li class="divider"></li>
-        <li class="events"><%= link_to "Blog", user_path(id: @user.id) %></li>
-        <li class="divider"></li>
+      <li class="name">
+        <h1>
+          <%= link_to "WeBe Bloggin", "/", class: "webe" %>
+        </h1>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
       </ul>
-    </section>
-</nav>
 
-<div class="panel small-6 small-centered columns">
-<h1>Post</h1>
-<%= form_for(@entry) do |f| %>
-  <% if @entry.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@entry.errors.count, "error") %> prohibited this entry from being saved:</h2>
+      <section class="top-bar-section">
 
-      <ul>
-      <% @entry.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul class="right">
+          <li class="divider"></li>
+          <li class="events"><%= link_to "Blog", user_path(id: @user.id) %></li>
+          <li class="divider"></li>
+          <li class="events"><%= link_to "Log out", log_out_path %></li>
+          <li class="divider"></li>
+        </ul>
+      </section>
+  </nav>
+
+  <div class="panel small-6 small-centered columns">
+  <h1>Post</h1>
+  <%= form_for(@entry) do |f| %>
+    <% if @entry.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@entry.errors.count, "error") %> prohibited this entry from being saved:</h2>
+
+        <ul>
+        <% @entry.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label :description %><br>
+      <%= f.text_area :description %>
+    </div>
+    <div class="actions">
+      <%= f.submit("New") %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
   </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="actions">
-    <%= f.submit("New") %>
-  </div>
+<% else %>
+  <h1>You must be logged in to view this page.</h1>
 <% end %>
-</div>
