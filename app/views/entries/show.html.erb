@@ -35,7 +35,7 @@
 <% end %>
 </div>
 
-<% Comment.where(entry_id: @entry.id).order(post_date: :desc).each do |comment| %>
+<% Comment.where(entry_id: @entry.id).order(post_date: :asc).each do |comment| %>
   <p><%= comment.name %></p>
   <p><%= markdown comment.description %></p>
   <p><%= comment.post_date %></p>

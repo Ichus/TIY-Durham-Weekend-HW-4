@@ -1,23 +1,16 @@
 Rails.application.routes.draw do
 
   get 'sign_up' => 'users#new', :as => 'sign_up'
+  get "users/:id" => "users#show", as: "user_show"
   resources :users
 
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "log_in" => "sessions#new", :as => "log_in"
   resources :sessions, only: [:new, :create, :destroy]
 
-  # resources :entries do
-  #   resources :comments, only: [:index, :new, :create]
-  # end
-  # resources :comments, only: [:show, :edit, :update, :destroy]
-
-  #post "/entries/:entry_id/comments(.:format)" => "comments#create", as: "post_comment"
   resources :entries do
     resources :comments, shallow: true
   end
-
-  #resources :comments
 
   get 'home/index'
 
