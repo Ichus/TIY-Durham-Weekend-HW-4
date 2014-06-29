@@ -1,3 +1,26 @@
+<nav class="top-bar" data-topbar>
+  <ul class="title-area">
+
+    <li class="name">
+      <h1>
+        <%= link_to "WeBe Bloggin", "/", class: "webe" %>
+      </h1>
+    </li>
+    <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+  </ul>
+
+  <section class="top-bar-section">
+
+    <ul class="right">
+      <li class="divider"></li>
+      <li class="events"><%= link_to "My Blog", "user_path" %></li>
+      <li class="divider"></li>
+    </ul>
+  </section>
+</nav>
+
+<div class="panel small-6 small-centered columns">
+
 <p id="notice"><%= notice %></p>
 
 <p><%= @entry.title %></p>
@@ -7,3 +30,5 @@
 
 <%= link_to 'Edit', edit_entry_path(@entry) %> |
 <%= link_to 'Back', entries_path %>
+</div>
+

@@ -37,11 +37,13 @@ gem 'simple_form', '~> 3.0.2'
 
 # Use Foundation for quick styling
 gem 'foundation-rails'
+
+# Use Kaminari for pagination
+gem 'kaminari'
 # Use unicorn as the app server
 # gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
 # Use debugger
 # gem 'debugger', group: [:development, :test]

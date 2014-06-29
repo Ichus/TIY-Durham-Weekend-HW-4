@@ -1,4 +1,37 @@
-<p id="notice"><%= notice %></p>
+<nav class="top-bar" data-topbar>
+  <ul class="title-area">
+
+    <li class="name">
+      <h1>
+        <%= link_to "WeBe Bloggin", "/", class: "webe" %>
+      </h1>
+    </li>
+    <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+  </ul>
+
+  <section class="top-bar-section">
+
+    <ul class="right">
+      <li class="divider"></li>
+      <li class="events"><%= link_to "My Blog", "user_path" %></li>
+      <li class="divider"></li>
+    </ul>
+  </section>
+</nav>
+
+<div class="panel small-6 small-centered columns">
+<div class='row'>
+    <h2>Recent Posts</h2>
+    <% Entry.order(post_date: :desc).each do |entry| %>
+        <p><%= entry.title %></p>
+        <p><%= entry.description %></p>
+    <% end %>
+  </div>
+
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+<p id="notice"><%= notice %></p>
+  <%= paginate @entry %>
+</div>
+

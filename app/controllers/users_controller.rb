@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @entry = Entry.order(:post_date).page(params[:page]).per(7)
   end
 
   # GET /users/new
