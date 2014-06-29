@@ -18,6 +18,8 @@
 
 body {
     background-image:url('background.jpeg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .field label{
