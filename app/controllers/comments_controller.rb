@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :set_entry, only: [:index, :create, :new]
 
   # GET /comments
   # GET /comments.json
@@ -14,7 +15,6 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-    @entry = Entry.find(params[:entry_id])
     @comment = Comment.new
   end
 
@@ -25,19 +25,14 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    #posts = Entry.all
-    #@entry = posts.find(last_post_viewed.id)
-    #@comment.entry = @entry
-    #@comment = Comment.new(comment_params)
-    @entry = Entry.find(params[:entry_id])
     @comment = @entry.comments.build(comment_params)
 
     respond_to do |format|
       if @comment.save
-        format.html { render @entry, notice: 'Comment was successfully created.' }
+        format.html { redirect_to @entry, notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else
-        format.html { render :new }
+        format.html { render entry_path }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
@@ -62,7 +57,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_to entry_comments_path, notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -71,6 +66,10 @@ class CommentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
       @comment = Comment.find(params[:id])
+    end
+
+    def set_entry
+      @entry = Entry.find(params[:entry_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -27,9 +27,6 @@ class EntriesController < ApplicationController
   # POST /entries.json
   def create
     @entry = current_user.entries.build(entry_params)
-    #@entry = Entry.create(entry_params)
-    #@entry.save
-    #@entry = Entry.new(entry_params)
 
     respond_to do |format|
       if @entry.save

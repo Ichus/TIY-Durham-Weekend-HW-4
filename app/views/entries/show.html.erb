@@ -35,5 +35,9 @@
 <% end %>
 </div>
 
-<!-- <%#= link_to 'Edit', edit_comment_path(@comment) %> |
-<%#= link_to 'Back', entries_path %> -->
+<% Comment.where(entry_id: @entry.id).order(post_date: :desc).each do |comment| %>
+  <p><%= comment.name %></p>
+  <p><%= markdown comment.description %></p>
+  <p><%= comment.post_date %></p>
+  <p>entry_id: <%= comment.entry_id %></p><br><br>
+<% end %>
