@@ -35,6 +35,9 @@ gem 'redcarpet'
 # Use simple-forms cause forms should be
 gem 'simple_form', '~> 3.0.2'
 
+# Use Kaminari for pagination
+gem 'kaminari'
+
 # Use Foundation for quick styling
 gem 'foundation-rails'
 # Use unicorn as the app server

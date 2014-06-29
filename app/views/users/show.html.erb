@@ -1,8 +1,12 @@
-<p id="notice"><%= notice %></p>
-
-<% Entry.where(user_id: @user.id).order(post_date: :desc).each do |entry| %>
-  <p><%= entry.title %></p>
-  <p><%= markdown entry.description %></p>
-  <p><%= entry.post_date %></p>
-  <p>user_id: <%= entry.user_id %></p><br><br>
-<% end %>
+<div class="panel small-10 small-offset-1 columns">
+  <div class='row'>
+    <h1>Recent Posts</h1><br><br>
+    <% Entry.where(user_id: @user.id).order(post_date: :desc).each do |entry| %>
+      <h3><%= entry.title %></h3>
+      <p><%= markdown entry.description %></p>
+      <p><%= entry.post_date %></p><br><br>
+    <% end %>
+  </div>
+  <p id="notice"><%= notice %></p>
+  <%= paginate @entry %>
+</div>
