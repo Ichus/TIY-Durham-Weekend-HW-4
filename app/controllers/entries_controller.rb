@@ -70,7 +70,7 @@ class EntriesController < ApplicationController
     end
 
     def set_user
-      @user = User.find(current_user.id)
+      @user = User.find(current_user.id) if current_user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
