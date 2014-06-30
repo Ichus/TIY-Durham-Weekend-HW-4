@@ -50,7 +50,7 @@
 <div class="panel small-6 small-centered columns">
 <h2><%= @entry.title %></h2>
 <p><%= markdown @entry.description %></p>
-<p><%= @entry.post_date %></p><br><br>
+<p><%= @entry.post_date %></p><br><p class="style"></p><br>
 
 
 <h4>Comment</h4>
@@ -84,7 +84,7 @@
 <% Comment.where(entry_id: @entry.id).order(post_date: :asc).each do |comment| %>
   <br><br><h5><%= comment.name %></h5>
   <p><%= markdown comment.description %></p>
-  <p><%= comment.post_date %></p>
+  <p><%= comment.post_date %></p><br><p class="style"></p>
   <% unless current_user == nil %>
     <p><%= link_to 'Delete comment', comment, method: :delete, data: { confirm: 'Are you sure?' } %></p>
   <% end %>

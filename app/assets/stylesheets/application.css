@@ -41,4 +41,5 @@ body {
 .style {
     border-bottom-style: solid;
     border-color: #ffffff;
+    border-bottom-width: thin;
 }
