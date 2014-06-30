@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   attr_accessor :password
   before_save :encrypt_password
 
-  has_many :entries
+  has_many :entries,  dependent: :destroy
 
   validates :password, presence: true, :length => { minimum: 6, maximum: 20 },
                        confirmation: true

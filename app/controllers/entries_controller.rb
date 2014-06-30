@@ -54,9 +54,10 @@ class EntriesController < ApplicationController
   # DELETE /entries/1
   # DELETE /entries/1.json
   def destroy
+    @user = @entry.user
     @entry.destroy
     respond_to do |format|
-      format.html { redirect_to entries_url, notice: 'Entry was successfully destroyed.' }
+      format.html { redirect_to @user, notice: 'Entry was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
