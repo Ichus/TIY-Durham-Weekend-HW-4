@@ -20,6 +20,8 @@
           <li class="divider"></li>
           <li class="events"><%= link_to "Create Post", users_path %></li>
           <li class="divider"></li>
+          <li class="events"><%= link_to "Blog", user_path(id: @user.id) %></li>
+          <li class="divider"></li>
           <li class="events"><%= link_to "Log out", log_out_path %></li>
           <li class="divider"></li>
         </ul>
