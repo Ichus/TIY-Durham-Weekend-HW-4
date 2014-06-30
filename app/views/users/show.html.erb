@@ -43,15 +43,15 @@
   </nav>
 <% end %>
 
-<div class="panel small-9 small-offset-1 columns">
+<div class="panel small-9 small-centered columns">
   <div class='row'>
     <h1>Recent Posts</h1><br><br>
     <% @entries.each do |entry| %>
       <h3><%= link_to entry.title, entry_path(id: entry.id), class: "white-text" %></h3>
       <p><%= markdown entry.description %></p>
-      <p><%= entry.post_date %></p><br><br>
+      <p><%= entry.post_date %></p><br><p class="style"></p><br>
     <% end %>
   </div>
   <p id="notice"><%= notice %></p>
-  <%= paginate @entries %>
+    <%= paginate @entries %>
 </div>
