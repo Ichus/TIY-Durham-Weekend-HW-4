@@ -34,4 +34,11 @@ body {
     background-color: #74afad ;
 }
 
-.white-text {color: #fff;}
+.white-text {
+    color: #fff;
+}
+
+.style {
+    border-bottom-style: solid;
+    border-color: #ffffff;
+}
