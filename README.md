@@ -8,4 +8,26 @@ Posts are written in Markdown. They're displayed like on any blog -- reverse seq
 
 Posts have a show view where you can just see that post. On the show view, there should be a comment form so you can leave comments. Comments should be shown on the page. Logged in users should be able to delete comments.
 
-Home page background image from https://www.flickr.com/photos/webtreatsetc/4890262262/ under the creative common license http://creativecommons.org/licenses/by/2.0/
+Use
+-------------------------
+run "git clone https://github.com/Ichus/TIY-Durham-Weekend-HW-4.git" in whichever directory you wish
+
+run rake db:migrate
+
+run rails server
+
+In your browser navigate to "http://0.0.0.0:3000"
+
+Assets
+------------------------
+Home page background image from "https://www.flickr.com/photos/webtreatsetc/4890262262/" under the creative common license "http://creativecommons.org/licenses/by/2.0/"
+
+To Do
+------------------------
+Add slug url's
+
+Add a side nav bar to see a User's posts by year/month
+
+Add draft post's
+
+Add remembering a commenter's name after first post. captcha's for sign up
