@@ -48,7 +48,7 @@ gem 'rails_12factor', group: :production
 gem 'pg', group: :production
 
 # Use unicorn as the app server
-gem 'unicorn'
+gem 'unicorn', group: :production
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
