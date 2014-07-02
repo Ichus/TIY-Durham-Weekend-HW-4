@@ -84,11 +84,16 @@
 <% end %>
 
 <% Comment.where(entry_id: @entry.id).order(post_date: :asc).each do |comment| %>
-  <br><br><h5><%= comment.name %></h5>
-  <p><%= markdown comment.description %></p>
-  <p><%= comment.post_date %></p><br><p class="style"></p>
-  <% unless current_user == nil %>
-    <p><%= link_to 'Delete comment', comment, method: :delete, data: { confirm: 'Are you sure?' }, class: "white-text" %></p>
+  <div id="<%= dom_id(Comment.find(comment.id)) %>">
+    <br><br><h5><%= comment.name %></h5>
+    <p><%= markdown comment.description %></p>
+    <p><%= comment.post_date %></p><br><p class="style"></p>
+    <% unless current_user == nil %>
+      <p><%= link_to 'Delete comment', comment, remote: true,
+                      method: :delete, data: { confirm: 'Are you sure?' },
+                      class: "white-text" %>
+      </p>
+  </div>
   <% end %>
 <% end %>
 
