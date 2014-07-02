@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
   helper_method :logged_in_redirect
+  helper_method :set_entry_comments
 
   private
 
@@ -16,5 +17,10 @@ class ApplicationController < ActionController::Base
     if current_user
       redirect_to users_path
     end
+  end
+
+  def set_entry_comments
+    entry = Entry.find(params[:id])
+    @entry_comments = Comment.where(entry_id: entry.id).order(post_date: :asc)
   end
 end

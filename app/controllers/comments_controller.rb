@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
   before_action :set_entry, only: [:index, :create, :new]
+  after_action :set_entry_comments, only: [:destroy]
 
   # GET /comments
   # GET /comments.json
@@ -59,7 +60,7 @@ class CommentsController < ApplicationController
     @comment.destroy
     respond_to do |format|
       format.html { redirect_to @entry, notice: 'Comment was successfully destroyed.' }
-      format.js
+      format.js {  }
     end
   end
 

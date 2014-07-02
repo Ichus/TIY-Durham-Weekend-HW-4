@@ -83,8 +83,8 @@
   </div>
 <% end %>
 
-<% Comment.where(entry_id: @entry.id).order(post_date: :asc).each do |comment| %>
-  <div id="<%= dom_id(Comment.find(comment.id)) %>">
+<% @entry_comments.each do |comment| %>
+  <div id="<%= dom_id comment %>">
     <br><br><h5><%= comment.name %></h5>
     <p><%= markdown comment.description %></p>
     <p><%= comment.post_date %></p><br><p class="style"></p>

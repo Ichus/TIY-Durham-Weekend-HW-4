@@ -1,6 +1,7 @@
 class EntriesController < ApplicationController
   before_action :set_entry, only: [:show, :edit, :update, :destroy]
   before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_entry_comments, only: [:show]
   # GET /entries
   # GET /entries.json
   def index
