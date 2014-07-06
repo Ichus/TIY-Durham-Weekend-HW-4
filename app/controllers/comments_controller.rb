@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
   before_action :set_entry, only: [:index, :create, :new]
-  after_action :set_entry_comments, only: [:destroy]
+
 
   # GET /comments
   # GET /comments.json
@@ -17,6 +17,11 @@ class CommentsController < ApplicationController
   # GET /comments/new
   def new
     @comment = Comment.new
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /comments/1/edit
@@ -31,10 +36,9 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         format.html { redirect_to @entry, notice: 'Comment was successfully created.' }
-        format.json { render :show, status: :created, location: @comment }
+        format.js
       else
-        format.html { render entry_path }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+        render entry_path(id: @entry.id)
       end
     end
   end
@@ -60,7 +64,7 @@ class CommentsController < ApplicationController
     @comment.destroy
     respond_to do |format|
       format.html { redirect_to @entry, notice: 'Comment was successfully destroyed.' }
-      format.js {  }
+      format.js
     end
   end
 

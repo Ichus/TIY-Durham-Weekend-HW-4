@@ -1,100 +1,80 @@
-<% unless current_user == nil %>
-  <nav class="top-bar" data-topbar>
-    <ul class="title-area">
+<div id="show-entry">
+  <% unless current_user == nil %>
+    <nav class="top-bar" data-topbar>
+      <ul class="title-area">
 
-      <li class="name">
-        <h1>
-          <%= link_to "WeBe Bloggin", "/", class: "webe" %>
-        </h1>
-      </li>
-      <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
-      </ul>
-
-      <section class="top-bar-section">
-
-        <ul class="right">
-          <li class="divider"></li>
-          <li class="events"><%= link_to 'Delete Post', @entry, method: :delete, data: { confirm: 'Are you sure?' } %></li>
-          <li class="divider"></li>
-          <li class="events"><%= link_to "Edit Post", edit_entry_path %></li>
-          <li class="divider"></li>
-          <li class="events"><%= link_to "Create Post", users_path %></li>
-          <li class="divider"></li>
-          <li class="events"><%= link_to "Blog", user_path(id: @user.id) %></li>
-          <li class="divider"></li>
-          <li class="events"><%= link_to "Log out", log_out_path %></li>
-          <li class="divider"></li>
+        <li class="name">
+          <h1>
+            <%= link_to "WeBe Bloggin", "/", class: "webe" %>
+          </h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
         </ul>
-      </section>
-  </nav>
-<% else %>
-  <nav class="top-bar" data-topbar>
-    <ul class="title-area">
 
-      <li class="name">
-        <h1>
-          <%= link_to "WeBe Bloggin", "/", class: "webe" %>
-        </h1>
-      </li>
-      <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
-      </ul>
+        <section class="top-bar-section">
 
-      <section class="top-bar-section">
+          <ul class="right">
+            <li class="divider"></li>
+            <li class="events"><%= link_to 'Delete Post', @entry, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+            <li class="divider"></li>
+            <li class="events"><%= link_to "Edit Post", edit_entry_path %></li>
+            <li class="divider"></li>
+            <li class="events"><%= link_to "Create Post", users_path %></li>
+            <li class="divider"></li>
+            <li class="events"><%= link_to "Blog", user_path(id: @user.id) %></li>
+            <li class="divider"></li>
+            <li class="events"><%= link_to "Log out", log_out_path %></li>
+            <li class="divider"></li>
+          </ul>
+        </section>
+    </nav>
+  <% else %>
+    <nav class="top-bar" data-topbar>
+      <ul class="title-area">
 
-        <ul class="right">
-          <li class="divider"></li>
-          <li class="divider"></li>
+        <li class="name">
+          <h1>
+            <%= link_to "WeBe Bloggin", "/", class: "webe" %>
+          </h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
         </ul>
-      </section>
-  </nav>
-<% end %>
 
-<div class="panel small-6 small-centered columns">
-<h2><%= @entry.title %></h2>
-<p><%= markdown @entry.description %></p>
-<p><%= @entry.post_date %></p><br><p class="style"></p><br>
+        <section class="top-bar-section">
 
+          <ul class="right">
+            <li class="divider"></li>
+            <li class="divider"></li>
+          </ul>
+        </section>
+    </nav>
+  <% end %>
 
-<h4>Add a Comment</h4>
-<%= form_for [@entry, @comment] do |f| %>
-  <% if @comment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+  <div class="panel small-6 small-centered columns">
+  <h2><%= @entry.title %></h2>
+  <p><%= markdown @entry.description %></p>
+  <p><%= @entry.post_date %></p><br><p class="style"></p><br>
 
-      <ul>
-      <% @comment.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <h3 class="white-text">
+    <%= link_to "Add a Comment", new_entry_comment_path(entry_id: @entry.id),
+        "data-reveal-id" => "new-comment-modal",  remote: true,
+        class: "button [radius round small large]" %>
+  </h3>
+
+  <% @entry_comments.each do |comment| %>
+    <div id="<%= dom_id comment %>">
+      <br><br><h5><%= comment.name %></h5>
+      <p><%= markdown comment.description %></p>
+      <p><%= comment.post_date %></p><br><p class="style"></p>
+      <% unless current_user == nil %>
+        <p><%= link_to 'Delete comment', comment, remote: true,
+                        method: :delete,
+                        class: "white-text" %>
+        </p>
     </div>
+    <% end %>
   <% end %>
 
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label "Comment" %><br>
-    <%= f.text_area :description, rows: "5" %>
-  </div>
-  <div class="actions">
-    <%= f.submit("New Comment") %>
-  </div>
-<% end %>
-
-<% @entry_comments.each do |comment| %>
-  <div id="<%= dom_id comment %>">
-    <br><br><h5><%= comment.name %></h5>
-    <p><%= markdown comment.description %></p>
-    <p><%= comment.post_date %></p><br><p class="style"></p>
-    <% unless current_user == nil %>
-      <p><%= link_to 'Delete comment', comment, remote: true,
-                      method: :delete, data: { confirm: 'Are you sure?' },
-                      class: "white-text" %>
-      </p>
-  </div>
-  <% end %>
-<% end %>
-
 </div>
+<div id="new-comment-modal" class="reveal-modal" data-reveal></div>

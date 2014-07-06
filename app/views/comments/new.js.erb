@@ -1,0 +1,5 @@
+$("#new-comment-modal").html('<%= j render "comments/form" %>').
+  append('<a class="close-reveal-modal">&#215;</a>').
+  foundation("reveal", "open");
+
+$("#new_entry_comment").attr("data-remote", "true");
