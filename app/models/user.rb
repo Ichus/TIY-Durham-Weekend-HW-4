@@ -1,6 +1,9 @@
+require 'securerandom'
+
 class User < ActiveRecord::Base
   attr_accessor :password
   before_save :encrypt_password
+  before_save :set_api_token
 
   has_many :entries,  dependent: :destroy
 
@@ -22,5 +25,9 @@ class User < ActiveRecord::Base
       self.password_salt = BCrypt::Engine.generate_salt
       self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
     end
+  end
+
+  def set_api_token
+    self.token = SecureRandom.urlsafe_base64
   end
 end

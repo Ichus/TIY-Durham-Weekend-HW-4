@@ -12,6 +12,20 @@ Rails.application.routes.draw do
     resources :comments, shallow: true
   end
 
+  namespace :api, :defaults => {:format => :json} do
+    namespace :v1 do
+      resources :users, except: [:index, :new, :edit]
+    end
+  end
+
+  namespace :api, :defaults => {:format => :json} do
+    namespace :v1 do
+      resources :entries do
+        resources :comments, shallow: true
+      end
+    end
+  end
+
   get 'home/index'
 
   root 'home#index'

@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
+  protect_from_forgery with: :null_session
 
   helper_method :current_user
   helper_method :logged_in_redirect
@@ -22,5 +22,19 @@ class ApplicationController < ActionController::Base
   def set_entry_comments
     entry = Entry.find(params[:id])
     @entry_comments = Comment.where(entry_id: entry.id).order(post_date: :asc)
+  end
+
+  def authorize
+    respond_to do |format|
+      format.html do
+        redirect_to log_in_path, alert: "You must log in to proceed." if current_user.nil?
+      end
+      format.js do
+        render nothing: true, status: :forbidden if current_user.nil?
+      end
+      format.json do
+        render nothing: true, status: :forbidden if current_user.nil?
+      end
+    end
   end
 end
