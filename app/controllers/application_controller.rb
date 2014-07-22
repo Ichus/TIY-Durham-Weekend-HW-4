@@ -14,14 +14,12 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in_redirect
-    if current_user
-      redirect_to users_path
-    end
+    redirect_to users_path if current_user
   end
 
   def set_entry_comments
     entry = Entry.find(params[:id])
-    @entry_comments = Comment.where(entry_id: entry.id).order(post_date: :asc)
+    @entry_comments = Comment.where(entry_id: entry.id).order(post_date: :asc).page(params[:page]).per(50)
   end
 
   def authorize

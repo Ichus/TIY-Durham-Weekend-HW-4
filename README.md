@@ -16,7 +16,7 @@ run rake db:migrate
 
 run rails server
 
-In your browser navigate to "http://0.0.0.0:3000"
+In your browser navigate to "http://localhost:3000"
 
 Assets
 ------------------------
@@ -31,3 +31,15 @@ Add a side nav bar to see a User's posts by year/month
 Add draft post's
 
 Add remembering a commenter's name after first post. captcha's for sign up
+
+API Use
+------------------------
+You can retrieve a page's information through the api directory
+
+If you were viewing the webpage at localhost:3000/users/1
+  Navigating to localhost:3000/api/users/1 would retrieve json
+
+You can Create (POST), Update(PATCH/PUT), Destroy(DELETE) any type of Record(Users, Entries, Comments)
+Example through curl "curl -X POST --data "comment[name]=Commenter&comment[description]=Description" http://localhost:3000/api/entries/9/comments"
+
+You must be logged in/API key to Create Entries, or to Update or Delete any record.
