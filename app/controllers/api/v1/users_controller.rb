@@ -1,9 +1,6 @@
-class API::V1::UsersController < ApplicationController
+class API::V1::UsersController < API::V1::BaseController
   before_action :set_user, only: [:show, :update, :destroy]
   before_action :authorize, only: [:update, :destroy]
-  skip_before_action :verify_authenticity_token
-
-  respond_to :json
 
   def show
     @user = User.find(current_user.id) if current_user

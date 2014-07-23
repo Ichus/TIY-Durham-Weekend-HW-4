@@ -1,10 +1,7 @@
-class API::V1::EntriesController < ApplicationController
+class API::V1::EntriesController < API::V1::BaseController
   before_action :set_entry, only: [:show, :update, :destroy]
   before_action :set_entry_comments, only: [:show]
   before_action :authorize, only: [:create, :update, :destroy]
-  skip_before_action :verify_authenticity_token
-
-  respond_to :json
 
   def show
   end

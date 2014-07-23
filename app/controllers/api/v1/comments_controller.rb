@@ -1,10 +1,7 @@
-class API::V1::CommentsController < ApplicationController
+class API::V1::CommentsController < API::V1::BaseController
   before_action :set_comment, only: [:update, :destroy]
   before_action :set_entry, only: [:create]
   before_action :authorize, only: [:update, :destroy]
-  skip_before_action :verify_authenticity_token
-
-  respond_to :json
 
   def create
     @comment = @entry.comments.build(comment_params)

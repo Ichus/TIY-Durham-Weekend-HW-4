@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   get 'sign_up' => 'users#new', :as => 'sign_up'
   get "users/:id" => "users#show", as: "user_show"
+  get "users/:id/api_token" => "users#api_token", as: "user_api_token"
   resources :users
 
   get "log_out" => "sessions#destroy", :as => "log_out"
@@ -12,7 +13,7 @@ Rails.application.routes.draw do
     resources :comments, shallow: true
   end
 
-  namespace :api, defaults: {format: :json} do
+  namespace :api, defaults: { format: :json } do
     namespace :v1, path: "" do
       resources :users, except: [:index, :new, :edit]
       resources :entries, except: [:index, :new, :edit] do

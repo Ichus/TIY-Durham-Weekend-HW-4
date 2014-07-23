@@ -10,7 +10,11 @@ Posts have a show view where you can just see that post. On the show view, there
 
 Use
 -------------------------
+With Ruby and Rails both installed
+
 run "git clone https://github.com/Ichus/TIY-Durham-Weekend-HW-4.git" in whichever directory you wish
+
+cd into the cloned directory
 
 run rake db:migrate
 
@@ -30,17 +34,20 @@ Add a side nav bar to see a User's posts by year/month
 
 Add draft post's
 
-Add remembering a commenter's name after first post. captcha's for sign up
+Add remembering a commenter's name after first post
+
+Add captcha's for sign up
 
 API Use
 ------------------------
 You can retrieve a page's information through the api directory
 
 If you were viewing the webpage at localhost:3000/users/1
-  Navigating to localhost:3000/api/users/1 would retrieve json
+  Navigating to "localhost:3000/api/users/1" would retrieve json
 
 You can Create (POST), Update(PATCH/PUT), Destroy(DELETE) any type of Record(Users, Entries, Comments)
-Example through curl "curl -X POST --data "comment[name]=Commenter&comment[description]=Description" http://localhost:3000/api/entries/9/comments"
+Example through curl "curl -X POST --data "comment[name]=Commenter&comment[description]=Description" http://localhost:3000/api/entries/:id/comments"
 
-You must be logged in/API key to Create Entries, or to Update or Delete any record.
-    ***API login not yet fully configured***
+You must pass the API key as a parameter to Create Entries, or to Update or Delete any record.
+    To retrieve your API token. Log in and click the link "API Token"
+    Example "curl -X PATCH --data "comment[name]=Commenter&comment[description]=Updated Description&api_token=Your API token here" http://localhost:3000/api/comments/:id"

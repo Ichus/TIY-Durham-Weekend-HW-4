@@ -32,6 +32,6 @@ class User < ActiveRecord::Base
     # If the token does exist it generates a new one until a unique one is created.
     begin
       self.api_token = SecureRandom.urlsafe_base64
-    end while User.exists?(api_token: token)
+    end while User.exists?(api_token: api_token)
   end
 end

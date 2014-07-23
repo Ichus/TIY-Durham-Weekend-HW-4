@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:api_token, :edit, :update, :destroy]
   before_action :authorize, only: [:index, :edit, :update]
 
   def index
@@ -10,6 +10,9 @@ class UsersController < ApplicationController
   def show
     @user = User.find(current_user.id) if current_user
     @entries = Entry.where(user_id: @user.id).order(post_date: :desc).page(params[:page]).per(7)
+  end
+
+  def api_token
   end
 
   def new
