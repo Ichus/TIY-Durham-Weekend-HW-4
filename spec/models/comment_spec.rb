@@ -1,4 +1,4 @@
-require 'rails-helper'
+require 'rails_helper'
 
 RSpec.describe Comment, :type => :model do
   it "sets the post_date as now" do

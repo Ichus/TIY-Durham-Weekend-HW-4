@@ -43,3 +43,4 @@ You can Create (POST), Update(PATCH/PUT), Destroy(DELETE) any type of Record(Use
 Example through curl "curl -X POST --data "comment[name]=Commenter&comment[description]=Description" http://localhost:3000/api/entries/9/comments"
 
 You must be logged in/API key to Create Entries, or to Update or Delete any record.
+    ***API login not yet fully configured***

@@ -32,6 +32,11 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use Rspec for behavioral testing
 gem 'rspec-rails', '~> 3.0.1', group: [:development, :test]
+gem 'guard-rspec', require: false, group: :development # Run tests when code changes
+gem 'simplecov', require: false, group: :test # Metric of code covered by tests
+gem 'capybara', group: :test # For integration tests
+# Required for Selenium. Transactional fixtures don't work with Selenium
+#gem 'database_cleaner', '~> 1.3.0'
 
 # Use redcarpet to render text in markdown
 gem 'redcarpet'
