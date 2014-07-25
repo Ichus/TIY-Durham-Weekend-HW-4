@@ -1,13 +1,19 @@
 class API::V1::EntriesController < API::V1::BaseController
   before_action :set_entry, only: [:show, :update, :destroy]
   before_action :set_entry_comments, only: [:show]
-  before_action :authorize, only: [:create, :update, :destroy]
+  before_action only: [:update, :destroy] do
+    authorize(:entry, @entry.id)
+  end
+  before_action only: :create do
+    authorize(:user, nil)
+  end
 
   def show
   end
 
   def create
-    @entry = current_user.entries.build(entry_params)
+    user = User.find_by_api_token(params[:api_token])
+    @entry = user.entries.build(entry_params)
 
     if @entry.save
       render :show, status: :created

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:api_token, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :api_token, :edit, :update, :destroy]
   before_action :authorize, only: [:index, :edit, :update]
 
   def index

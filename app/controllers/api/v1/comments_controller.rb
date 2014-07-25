@@ -1,7 +1,9 @@
 class API::V1::CommentsController < API::V1::BaseController
   before_action :set_comment, only: [:update, :destroy]
   before_action :set_entry, only: [:create]
-  before_action :authorize, only: [:update, :destroy]
+  before_action only: [:update, :destroy] do
+    authorize(:comment, @comment.id)
+  end
 
   def create
     @comment = @entry.comments.build(comment_params)

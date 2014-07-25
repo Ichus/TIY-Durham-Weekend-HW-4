@@ -1,10 +1,11 @@
 class API::V1::UsersController < API::V1::BaseController
   before_action :set_user, only: [:show, :update, :destroy]
-  before_action :authorize, only: [:update, :destroy]
+  before_action only: [:update, :destroy] do
+    authorize(:user, nil)
+  end
 
   def show
-    @user = User.find(current_user.id) if current_user
-    @entries = Entry.where(user_id: @user.id).order(post_date: :desc).page(params[:page]).per(7)
+    @entries = Entry.where(user_id: @user.id).order(post_date: :desc).page(params[:page]).per(10)
   end
 
   def create

@@ -49,5 +49,7 @@ You can Create (POST), Update(PATCH/PUT), Destroy(DELETE) any type of Record(Use
 Example through curl "curl -X POST --data "comment[name]=Commenter&comment[description]=Description" http://localhost:3000/api/entries/:id/comments"
 
 You must pass the API key as a parameter to Create Entries, or to Update or Delete any record.
-    To retrieve your API token. Log in and click the link "API Token"
+    To retrieve your API token. Log in and click the link "API Token" in the top nav bar.
     Example "curl -X PATCH --data "comment[name]=Commenter&comment[description]=Updated Description&api_token=Your API token here" http://localhost:3000/api/comments/:id"
+            "curl -X DELETE --data "api_token=Your API token here" http://localhost:3000/api/entries/:id"
+            "curl -X POST --data "entry[title]=API Made Post&entry[description]=API Made Description&api_token=Your API token here" http://localhost:3000/api/entries"
