@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     namespace :v1, path: "" do
-      resources :users, except: [:index, :new, :edit]
+      resources :users, except: [:new, :edit]
       resources :entries, except: [:index, :new, :edit] do
         resources :comments, shallow: true
       end

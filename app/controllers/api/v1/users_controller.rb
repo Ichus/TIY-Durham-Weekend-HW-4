@@ -4,6 +4,10 @@ class API::V1::UsersController < API::V1::BaseController
     authorize(:user, nil)
   end
 
+  def index
+    @users = User.all.page(params[:page]).per(2)
+  end
+
   def show
     @entries = Entry.where(user_id: @user.id).order(post_date: :desc).page(params[:page]).per(10)
   end
