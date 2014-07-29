@@ -46,7 +46,7 @@ If you were viewing the webpage at localhost:3000/users/1
     Navigating to "localhost:3000/api/users/1" would retrieve json
 
 You can Create (POST), Update(PATCH/PUT), Destroy(DELETE) any type of Record(Users, Entries, Comments)
-Example through curl "curl -X POST --data "comment[name]=Commenter&comment[description]=Description" http://localhost:3000/api/entries/:id/comments"
+    Example through curl "curl -X POST --data "comment[name]=Commenter&comment[description]=Description" http://localhost:3000/api/entries/:id/comments"
 
 You must pass the API key as a parameter to Create Entries, or to Update or Delete any record.
     To retrieve your API token. Log in and click the link "API Token" in the top nav bar.
@@ -56,17 +56,23 @@ You must pass the API key as a parameter to Create Entries, or to Update or Dele
 
 Valid API endpoints
     Users
-        localhost:3000/api/users                        -All Users
-        localhost:3000/api/users/:id                    -Individual User
-        POST localhost:3000/api/users                   -Create a User
-        PATCH localhost:3000/api/users/:id              -Update a User
-        DELETE localhost:3000/api/users/:id             -Delete a User
+        | Endpoint                                     | Action            |
+        | :------------------------------------------- | :---------------: |
+        | localhost:3000/api/users                     | -All Users        |
+        | localhost:3000/api/users/:id                 | -Individual User  |
+        | POST localhost:3000/api/users                | -Create a User    |
+        | PATCH localhost:3000/api/users/:id           | -Update a User    |
+        | DELETE localhost:3000/api/users/:id          | -Delete a User    |
     Blogs
-        localhost:3000/api/entries/:id                  -Individual Blog
-        POST localhost:3000/api/entries                 -Create a Blog
-        PATCH localhost:3000/api/entries/:id            -Update a Blog
-        DELETE localhost:3000/api/entries/:id           -Delete a Blog
+        | Endpoint                                     | Action            |
+        | :------------------------------------------- | :---------------: |
+        | localhost:3000/api/entries/:id               | -Individual Blog  |
+        | POST localhost:3000/api/entries              | -Create a Blog    |
+        | PATCH localhost:3000/api/entries/:id         | -Update a Blog    |
+        | DELETE localhost:3000/api/entries/:id        | -Delete a Blog    |
     Comments
-        POST localhost:3000/api/entries/:id/comments    -Create a Comment
-        PATCH localhost:3000/api/comments/:id           -Update a Comment
-        DELETE localhost:3000/api/comments/:id          -Delete a Comment
+        | Endpoint                                     | Action            |
+        | :------------------------------------------- | :---------------: |
+        | POST localhost:3000/api/entries/:id/comments | -Create a Comment |
+        | PATCH localhost:3000/api/comments/:id        | -Update a Comment |
+        | DELETE localhost:3000/api/comments/:id       | -Delete a Comment |
