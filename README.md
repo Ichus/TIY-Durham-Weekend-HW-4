@@ -87,7 +87,7 @@ API Use
   - password
   - password_confirmation
   
-- Blog
+- Blog Post(Entry)
   - title
   - description
  
