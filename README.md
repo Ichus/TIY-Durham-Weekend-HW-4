@@ -81,13 +81,16 @@ API Use
 | DELETE localhost:3000/api/comments/:id       | Delete a Comment |
 
 **Acceptable Params**
--User
+
+- User
   - username
   - password
   - password_confirmation
--Blog
+  
+- Blog
   - title
   - description
--Comment
+ 
+- Comment
   - name
   - description
