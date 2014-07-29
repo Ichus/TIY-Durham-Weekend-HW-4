@@ -24,7 +24,7 @@ class API::V1::EntriesController < API::V1::BaseController
 
   def update
     if @entry.update(entry_params)
-      render :show, status: :ok
+      render :nothing, status: :ok
     else
       render json: @entry.errors, status: :unprocessable_entity
     end

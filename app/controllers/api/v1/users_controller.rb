@@ -24,7 +24,7 @@ class API::V1::UsersController < API::V1::BaseController
 
   def update
     if @user.update(user_params)
-      render :show, status: :ok
+      render :nothing, status: :ok
     else
       render json: @user.errors, status: :unprocessable_entity
     end
