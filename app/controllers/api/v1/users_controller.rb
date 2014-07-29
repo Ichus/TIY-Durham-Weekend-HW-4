@@ -5,7 +5,7 @@ class API::V1::UsersController < API::V1::BaseController
   end
 
   def index
-    @users = User.all.page(params[:page]).per(2)
+    @users = User.all.page(params[:page]).per(50)
   end
 
   def show
