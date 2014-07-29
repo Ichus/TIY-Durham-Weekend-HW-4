@@ -24,7 +24,7 @@ Use
 
 Assets
 ------------------------
-- Background image from "https://www.flickr.com/photos/webtreatsetc/4890262262/" 
+- Background image from "https://www.flickr.com/photos/webtreatsetc/4890262262/"
     - under the creative common license "http://creativecommons.org/licenses/by/2.0/"
 
 To Do
@@ -52,13 +52,13 @@ API Use
 
 - You must pass the API key as a parameter to Create Entries, or to Update or Delete any record.
     - To retrieve your API token. Log in and click the link "API Token" in the top nav bar.
-    - Example 
+    - Example
         - "curl -X PATCH --data "comment[name]=Commenter&comment[description]=Updated Description&api_token=Your API token here" http://localhost:3000/api/comments/:id"
         - "curl -X DELETE --data "api_token=Your API token here" http://localhost:3000/api/entries/:id"
         - "curl -X POST --data "entry[title]=API Made Post&entry[description]=API Made Description&api_token=Your API token here" http://localhost:3000/api/entries"
 
 **Valid API endpoints**
-   
+
 | User Endpoints                               | Action           |
 | :------------------------------------------- | :--------------: |
 | localhost:3000/api/users                     | All Users        |
@@ -73,9 +73,21 @@ API Use
 | POST localhost:3000/api/entries              | Create a Blog    |
 | PATCH localhost:3000/api/entries/:id         | Update a Blog    |
 | DELETE localhost:3000/api/entries/:id        | Delete a Blog    |
-    
+
 | Comment Endpoints                            | Action           |
 | :------------------------------------------- | :--------------: |
 | POST localhost:3000/api/entries/:id/comments | Create a Comment |
 | PATCH localhost:3000/api/comments/:id        | Update a Comment |
 | DELETE localhost:3000/api/comments/:id       | Delete a Comment |
+
+**Acceptable Params**
+-User
+  - username
+  - password
+  - password_confirmation
+-Blog
+  - title
+  - description
+-Comment
+  - name
+  - description

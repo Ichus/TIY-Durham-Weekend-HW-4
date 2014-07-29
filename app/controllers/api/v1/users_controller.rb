@@ -16,7 +16,7 @@ class API::V1::UsersController < API::V1::BaseController
     @user = User.new(user_params)
 
     if @user.save
-      render :show, status: :created
+      render :nothing, status: :created
     else
       render json: @user.errors, status: :unprocessable_entity
     end

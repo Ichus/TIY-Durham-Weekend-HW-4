@@ -16,7 +16,7 @@ class API::V1::EntriesController < API::V1::BaseController
     @entry = user.entries.build(entry_params)
 
     if @entry.save
-      render :show, status: :created
+      render :nothing, status: :created
     else
       render json: @entry.errors, status: :unprocessable_entity
     end
